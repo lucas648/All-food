@@ -1,4 +1,4 @@
-import { Button, TextField, Typography, Box} from "@mui/material";
+import { Button, TextField, Typography, Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import http from "../../../../http";
@@ -39,9 +39,9 @@ export default function FormularioRestaurante() {
 
 
   return (
-    <Box sx={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1 }}>
       <Typography component="h1" variant="h6">Formulário Restaurantes</Typography>
-      <Box component='form' onSubmit={formSubmit}>
+      <Box component='form' onSubmit={formSubmit} sx={{ width: '100%' }}>
         <TextField
           value={nomeRestaurante}
           onChange={(evento) => setNomeRestaurante(evento.target.value)}
@@ -51,9 +51,9 @@ export default function FormularioRestaurante() {
           required
         />
         <Button
-        sx={{
-          marginTop: 1
-        }}
+          sx={{
+            marginTop: 1
+          }}
           type="submit"
           variant="outlined"
           fullWidth
