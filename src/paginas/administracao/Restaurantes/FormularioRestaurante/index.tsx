@@ -1,7 +1,7 @@
 import { Button, TextField, Typography, Box} from "@mui/material";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import http from "../../../../http";
 import IRestaurante from "../../../../interfaces/IRestaurante";
 
 export default function FormularioRestaurante() {
@@ -12,7 +12,7 @@ export default function FormularioRestaurante() {
 
   useEffect(() => {
     if (parametros.id) {
-      axios.get<IRestaurante>(`http://localhost:8000/api/v2/restaurantes/${parametros.id}/`)
+      http.get<IRestaurante>(`restaurantes/${parametros.id}/`)
         .then(resposta => {
           setNomeRestaurante(resposta.data.nome)
         })
@@ -23,13 +23,13 @@ export default function FormularioRestaurante() {
     evento.preventDefault();
 
     if (parametros.id) {
-      axios.put<IRestaurante>(`http://localhost:8000/api/v2/restaurantes/${parametros.id}/`, { nome: nomeRestaurante })
+      http.put<IRestaurante>(`restaurantes/${parametros.id}/`, { nome: nomeRestaurante })
         .then(resposta => {
           console.log(resposta.data)
           alert("Nome Alterado")
         })
     } else {
-      axios.post('http://localhost:8000/api/v2/restaurantes/', { nome: nomeRestaurante })
+      http.post('restaurantes/', { nome: nomeRestaurante })
         .then(resposta => {
           console.log(resposta.data)
           alert("restaurante cadastrado")
