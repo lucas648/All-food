@@ -6,3 +6,8 @@ export default interface IPrato {
   descricao: string
   restaurante: number
 }
+
+export interface ITag {
+  value: string,
+  id: number
+}
